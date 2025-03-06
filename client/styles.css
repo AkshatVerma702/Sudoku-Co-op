@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Liter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barriecito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
+:root {
+    --text: black;
+    --background: white;
+    --primary: #007bff;
+    --secondary: white;
+    --accent: #17a2b8;
+    --button-text: white;
+    --border-color: black;
+    --hover-bg: #f0f0f0;
+    --hover-border: #555;
+    --filled-bg: rgb(197, 194, 194);
+    --mode-background: white;
+    --cellBg: white;
+    --cell-border-color: black;
+}
+
+.darkMode {
+    --text: #d5e0fa;
+    --background: #02040d;
+    --primary: #8ba8f0;
+    --secondary: #3f139a;
+    --accent: #9329e4;
+    --button-text: #02040d;
+    --border-color: rgb(251, 247, 247);
+    --hover-bg: rgb(213, 208, 208);
+    --hover-border: #888;
+    --filled-bg: #2a2a2a;
+    --mode-background: white;
+    --cellBg: #b0c5f9;
+    --cell-border-color: #3f139a;
+}
+
+body{
+    user-select: none;
+    background-color: var(--background) !important;
+}
+
+#darkMode{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    margin-top: 0.7%;
+    margin-right: 0.6%;
+    float: right;
+    border: 2px solid black;
+    border-radius: 20%;
+    padding: 0.2%;
+    transition: box-shadow 0.26s ease-in;
+    background-color: white;
+}
+
+#darkMode:hover{
+    box-shadow: 0px 0px 20px 3px rgb(147, 147, 147);
+    transform: scale(1.01);
+}
+
+#darkMode-img{
+    width: 40px;
+    height: auto;
+    cursor: pointer;
+}
+
+#title{
+    font-family: "Barriecito", serif;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-left: 0.5%;
+    color: var(--text);
+}
+
+.game-container{
+    display: flex;
+    justify-content: space-evenly;
+    justify-items: center;
+    align-items: center;
+    margin-top: 7.5%;
+    font-family: "Roboto Mono", serif;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+#entry{
+    width: 100%;
+    outline: none;
+    text-align: center;
+    vertical-align: middle;
+
+}
+
+#sudoku-board-1, #sudoku-board-2{
+    scale: 1.3;
+    display: grid;
+    grid-template-columns: repeat(9, 35px);
+    border-radius: 1%;
+    border: 2px solid var(--cell-border-color);
+}
+
+#sudoku-board-1{
+    box-shadow: 1px 1px 50px 1px rgb(152, 152, 249);
+}
+
+#sudoku-board-2{
+    box-shadow: 1px 1px 50px 1px rgb(246, 132, 132);
+}
+
+input{
+    background-color: var(--cellBg);
+    cursor: pointer;
+}
+
+#row-3, #row-6{
+    border-right: 2px solid var(--cell-border-color);
+}
+
+.block{
+    border-bottom: 2px solid var(--cell-border-color);
+}
+
+.playerIds{
+    margin-top: 4%;
+    font-family: "Liter", serif;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 1.3rem;
+    color: var(--accent);
+}
+
+.player-1{
+    margin-right: 8%;
+}
+
+#generate-sudoku{
+    margin-top: 4%;
+    display: flex;
+    justify-self: center;
+}
+
+#generate-sudoku-btn{
+    scale: 1.1;
+}
+
+#clock{
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    margin-top: 2%;
+    border: 1px solid black;
+    padding: 0.2%;
+    border-radius: 10px;
+    box-shadow: 5px 5px 2px 1px black;
+}
+
+#time{
+    /* display: none; */
+    font-family: "Fjalla One", serif;
+    font-size: 2rem;
+}
+
+.invalidCell{
+    background-color: rgb(242, 137, 137);
+}
+
+#score-container {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); 
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .score-content {
+    background: white;
+    padding: 20px;
+    width: 350px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .score-header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  #score-display {
+    font-size: 18px;
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  #player-1-score, #player-2-score {
+    margin: 10px 0;
+    font-weight: bold;
+  }
+  
+  #player-1-score {
+    color: #007bff;
+  }
+  
+  #player-2-score {
+    color: #dc3545;
+  }
+
+  #hide-btn {
+    background: #007bff; /* Blue background */
+    color: white; /* White text */
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin-top: 15px;
+    display: block;
+    width: 100%;
+  }
+  
+  #hide-btn:hover {
+    background: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05);
+  }
+  
+  #hide-btn:active {
+    background: #00408a; /* Even darker blue when clicked */
+    transform: scale(0.98);
+  }
+
+  .show-modal{
+    display: flex !important;
+    }
+  
+  
+  /* Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  #select-levels{
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    padding: 10px;
+    font-size: 1.3rem;
+    font-family: "Fjalla One", serif;
+  }
+
+  #level-selector-label{
+    margin-right: 6px;
+  }
+
+  select{
+    appearance: none;
+    padding-left: 9px;
+    width: 50px;
+    outline: none;
+    border: none;
+  }
+
